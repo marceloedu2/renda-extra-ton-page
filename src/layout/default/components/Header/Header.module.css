@@ -1,0 +1,117 @@
+.menuContainer {
+  @apply flex flex-col h-full justify-center cursor-default;
+
+  & .menu {
+    @apply opacity-0 transition-all;
+  }
+
+  &:hover {
+    @apply rounded-t-md;
+    height: calc(100% + 1px);
+    box-shadow: inset 0px 1px 0px #e6ecf2, inset 1px 0px 0px #e6ecf2,
+      inset -1px 0px 0px #e6ecf2, inset 0px -1px 0px #ffffff;
+
+    & .menu {
+      @apply visible opacity-100;
+    }
+  }
+}
+
+.menu {
+  @apply invisible absolute top-full overflow-hidden bg-display-0 rounded-b-md min-w-[345px] py-8 px-8;
+  box-shadow: 0px 16px 16px rgba(103, 116, 129, 0.15),
+    inset 0px -1px 0px #e6ecf2, inset 1px 0px 0px #e6ecf2,
+    inset -1px 0px 0px #e6ecf2;
+
+  & > a {
+    @apply cursor-pointer;
+
+    &:hover {
+      @apply bg-display-50;
+
+      & p:first-child {
+        @apply text-ton-500;
+      }
+    }
+
+    @apply p-16;
+  }
+}
+
+.menuMobileRightIcons {
+  @apply flex mr-[-8px] text-ton-500 gap-8;
+
+  & > div {
+    @apply w-48 h-48 flex items-center justify-center;
+  }
+
+  & div.active {
+    @apply bg-display-100 rounded-full text-display-900;
+  }
+}
+
+.menuIcon {
+  @apply flex flex-col gap-4;
+
+  & span {
+    width: 18px;
+    height: 2px;
+    @apply bg-ton-500 rounded-lg transition-transform;
+  }
+}
+
+.active {
+  @apply gap-0 relative items-center justify-center;
+
+  & span {
+    @apply bg-display-900 transform absolute;
+
+    &:nth-child(1) {
+      @apply rotate-45;
+    }
+
+    &:nth-child(2) {
+      @apply hidden;
+    }
+
+    &:nth-child(3) {
+      @apply -rotate-45;
+    }
+  }
+}
+
+.menuDrawer {
+  @apply w-full hidden overflow-hidden absolute z-[51] bg-display-900 top-64 md:top-[72px] right-0 bg-opacity-50;
+
+  height: calc(100% - 64px);
+
+  @screen md {
+    height: calc(100% - 72px);
+  }
+
+  & .menuMobile,
+  & .customerMenuMobile {
+    @apply w-full h-full bg-display-100 max-w-[414px] ml-auto;
+  }
+}
+
+.menuMobile {
+  @apply flex flex-col;
+}
+
+.customerMenuDrawer {
+  @apply w-full hidden overflow-hidden absolute bg-display-900 top-64 md:top-[72px] right-0 bg-opacity-0 xs:bg-opacity-50;
+
+  @screen xs {
+    height: calc(100vh - 64px);
+  }
+
+  @screen md {
+    height: calc(100vh - 72px);
+  }
+
+  & .menuMobile,
+  & .customerMenuMobile {
+    @apply w-full h-full bg-display-100 max-w-[414px] ml-auto;
+  }
+}
